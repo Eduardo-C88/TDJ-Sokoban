@@ -1,5 +1,1 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"C:/TDJ/TDJ-Sokoban/Sokoban_P1/Content/Character4.png","C:/TDJ/TDJ-Sokoban/Sokoban_P1/Content/bin/DesktopGL/Content/Character4.xnb","TextureProcessor","Texture2DContent",1668,8817,0,2815244
-"C:/TDJ/TDJ-Sokoban/Sokoban_P1/Content/Crate_Brown.png","C:/TDJ/TDJ-Sokoban/Sokoban_P1/Content/bin/DesktopGL/Content/Crate_Brown.xnb","TextureProcessor","Texture2DContent",1064,16469,0,0041838
-"C:/TDJ/TDJ-Sokoban/Sokoban_P1/Content/EndPoint_Blue.png","C:/TDJ/TDJ-Sokoban/Sokoban_P1/Content/bin/DesktopGL/Content/EndPoint_Blue.xnb","TextureProcessor","Texture2DContent",592,4181,0,0039034
-"C:/TDJ/TDJ-Sokoban/Sokoban_P1/Content/Wall_Brown.png","C:/TDJ/TDJ-Sokoban/Sokoban_P1/Content/bin/DesktopGL/Content/Wall_Brown.xnb","TextureProcessor","Texture2DContent",1493,16469,0,0047447

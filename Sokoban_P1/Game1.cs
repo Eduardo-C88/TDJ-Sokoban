@@ -15,6 +15,7 @@ namespace Sokoban_P1
         private char[,] level;
         private Texture2D player, dot, box, wall; //Load images Texture
         int tileSize = 64; //potencias de 2 (operações binárias)
+        private Player sokoban;
 
         public Game1()
         {
@@ -27,6 +28,9 @@ namespace Sokoban_P1
         {
             // TODO: Add your initialization logic here
             LoadLevel("level1.txt");
+            _graphics.PreferredBackBufferHeight = tileSize * level.GetLength(1); //definição da altura
+            _graphics.PreferredBackBufferWidth = tileSize * level.GetLength(0); //definição da largura
+            _graphics.ApplyChanges(); //aplica a atualização da janela
 
             base.Initialize();
         }
@@ -60,23 +64,27 @@ namespace Sokoban_P1
             // TODO: Add your drawing code here
             _spriteBatch.Begin();
             _spriteBatch.DrawString(font, "KFJDSBKSDFBSKLLLSNDB", new Vector2(0, 0), Color.Black);
-            _spriteBatch.DrawString(font, $"Numero de Linhas = {nrLinhas} -- Numero de Colunas = {nrColunas}", new Vector2(0, 30), Color.Black);
+            _spriteBatch.DrawString(font, $"Numero de Linhas = {nrLinhas}\nx    Numero de Colunas = {nrColunas}", new Vector2(0, 30), Color.Black);
 
             Rectangle position = new Rectangle(0, 0, tileSize, tileSize);
             for (int x = 0; x < level.GetLength(0); x++) //pega a primeira dimensão
             {
                 for (int y = 0; y < level.GetLength(1); y++) //pega a segunda dimensão
                 {
+
+                    position.X = x * tileSize; // define o position
+                    position.Y = y * tileSize; // define o position
+
                     switch (level[x, y])
                     {
-                        case 'Y':
-                            _spriteBatch.Draw(player, position, Color.White);
-                            break;
+                        //case 'Y':
+                        //    _spriteBatch.Draw(player, position, Color.White);
+                        //    break;
                         case '#':
                             _spriteBatch.Draw(box, position, Color.White);
                             break;
                         case '.':
-                            _spriteBatch.Draw(dot, position, Color.White);
+                            _spriteBatch.Draw(dot, position, Color.White);                                                              
                             break;
                         case 'X':
                             _spriteBatch.Draw(wall, position, Color.White);
@@ -84,7 +92,9 @@ namespace Sokoban_P1
                     }
                 }
             }
-
+            position.X = sokoban.Position.X * tileSize; //posição do Player
+            position.Y = sokoban.Position.Y * tileSize; //posição do Player
+            _spriteBatch.Draw(player, position, Color.White); //desenha o Player
             _spriteBatch.End();
 
             base.Draw(gameTime);
@@ -101,7 +111,15 @@ namespace Sokoban_P1
             {
                 for (int y = 0; y < nrLinhas; y++)
                 {
-                    level[x, y] = linhas[y][x];
+                    if (linhas[y][x] == 'Y')
+                    {
+                        sokoban = new Player(x, y);
+                        level[x, y] = ' '; // put a blank instead of the sokoban 'Y'
+                    }
+                    else
+                    {
+                        level[x, y] = linhas[y][x];
+                    }
                 }
             }
 
