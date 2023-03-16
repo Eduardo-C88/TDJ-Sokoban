@@ -1,2 +1,11 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"C:/TDJ/TDJ-Sokoban/Sokoban_P1/Content/EndPoint_Blue.png","C:/TDJ/TDJ-Sokoban/Sokoban_P1/Content/bin/DesktopGL/EndPoint_Blue.xnb","TextureProcessor","Texture2DContent",592,4181,0,2386968
+"C:/TDJ/TDJ-Sokoban/Sokoban_P1/Content/Character1.png","C:/TDJ/TDJ-Sokoban/Sokoban_P1/Content/bin/DesktopGL/Character1.xnb","TextureProcessor","Texture2DContent",1487,9997,0,2940563
+"C:/TDJ/TDJ-Sokoban/Sokoban_P1/Content/Character10.png","C:/TDJ/TDJ-Sokoban/Sokoban_P1/Content/bin/DesktopGL/Character10.xnb","TextureProcessor","Texture2DContent",1544,9829,0,010452
+"C:/TDJ/TDJ-Sokoban/Sokoban_P1/Content/Character2.png","C:/TDJ/TDJ-Sokoban/Sokoban_P1/Content/bin/DesktopGL/Character2.xnb","TextureProcessor","Texture2DContent",1474,9997,0,013235
+"C:/TDJ/TDJ-Sokoban/Sokoban_P1/Content/Character3.png","C:/TDJ/TDJ-Sokoban/Sokoban_P1/Content/bin/DesktopGL/Character3.xnb","TextureProcessor","Texture2DContent",1564,9829,0,0143949
+"C:/TDJ/TDJ-Sokoban/Sokoban_P1/Content/Character5.png","C:/TDJ/TDJ-Sokoban/Sokoban_P1/Content/bin/DesktopGL/Character5.xnb","TextureProcessor","Texture2DContent",1747,8817,0,0135512
+"C:/TDJ/TDJ-Sokoban/Sokoban_P1/Content/Character6.png","C:/TDJ/TDJ-Sokoban/Sokoban_P1/Content/bin/DesktopGL/Character6.xnb","TextureProcessor","Texture2DContent",1752,8817,0,0109349
+"C:/TDJ/TDJ-Sokoban/Sokoban_P1/Content/Character7.png","C:/TDJ/TDJ-Sokoban/Sokoban_P1/Content/bin/DesktopGL/Character7.xnb","TextureProcessor","Texture2DContent",1435,8965,0,0145147
+"C:/TDJ/TDJ-Sokoban/Sokoban_P1/Content/Character8.png","C:/TDJ/TDJ-Sokoban/Sokoban_P1/Content/bin/DesktopGL/Character8.xnb","TextureProcessor","Texture2DContent",1492,8965,0,0116255
+"C:/TDJ/TDJ-Sokoban/Sokoban_P1/Content/Character9.png","C:/TDJ/TDJ-Sokoban/Sokoban_P1/Content/bin/DesktopGL/Character9.xnb","TextureProcessor","Texture2DContent",1485,8965,0,0119697
+"C:/TDJ/TDJ-Sokoban/Sokoban_P1/Content/File.spritefont","C:/TDJ/TDJ-Sokoban/Sokoban_P1/Content/bin/DesktopGL/File.xnb","FontDescriptionProcessor","SpriteFontContent",2068,21535,0,1853459
