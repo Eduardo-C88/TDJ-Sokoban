@@ -17,11 +17,34 @@ namespace Sokoban_P1
         public Point Position => position; //auto função (equivalente a ter só get sem put)
         private Game1 game; //reference from Game1 to Player
         private bool keysReleased = true;
+        private Texture2D[] sprites;
+        public enum Direction
+        {
+            Up, Down, Left, Right // 0, 1, 2, 3
+        }
+        private Direction direction = Direction.Down;
 
         public Player(Game1 game1, int x, int y) //constructor que dada a as +osições guarda a sua posição
         {
             position = new Point(x, y);
             game = game1;
+        }
+
+        public void LoadContents()
+        {
+            sprites = new Texture2D[4];
+            sprites[(int)Direction.Down] = game.Content.Load<Texture2D>("Character4");
+            sprites[(int)Direction.Up] = game.Content.Load<Texture2D>("Character7");
+            sprites[(int)Direction.Left] = game.Content.Load<Texture2D>("Character1");
+            sprites[(int)Direction.Right] = game.Content.Load<Texture2D>("Character2");
+        }
+
+        public void Draw(SpriteBatch sb)
+        {
+            Rectangle rect = new Rectangle(Game1.tileSize * position.X,
+            Game1.tileSize * position.Y,
+            Game1.tileSize, Game1.tileSize);
+            sb.Draw(sprites[(int)direction], rect, Color.White); //desenha o Player
         }
 
         public void Update(GameTime gameTime)
@@ -34,22 +57,22 @@ namespace Sokoban_P1
                 if ((kState.IsKeyDown(Keys.A)) || (kState.IsKeyDown(Keys.Left)))
                 {
                     position.X--;
-                    game.direction = Direction.Left;
+                    direction = Direction.Left;
                 }
                 else if ((kState.IsKeyDown(Keys.W)) || (kState.IsKeyDown(Keys.Up)))
                 {
                     position.Y--;
-                    game.direction = Direction.Up;
+                    direction = Direction.Up;
                 }
                 else if ((kState.IsKeyDown(Keys.S)) || (kState.IsKeyDown(Keys.Down)))
                 {
                     position.Y++;
-                    game.direction = Direction.Down;
+                    direction = Direction.Down;
                 }
                 else if ((kState.IsKeyDown(Keys.D)) || (kState.IsKeyDown(Keys.Right)))
                 {
                     position.X++;
-                    game.direction = Direction.Right;
+                    direction = Direction.Right;
                 }
                 else keysReleased = true;
                 // destino é caixa?

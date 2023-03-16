@@ -15,16 +15,16 @@ namespace Sokoban_P1
         private int nrColunas = 0;
         public char[,] level;
         private Texture2D dot, box, wall; //Load images Texture
-        private Texture2D[] player;
-        int tileSize = 64; //potencias de 2 (operações binárias)
+        //private Texture2D[] player;
+        public const int tileSize = 64; //potencias de 2 (operações binárias)
         private Player sokoban;
         public List<Point> boxes;
 
-        public enum Direction
-        {
-            Up, Down, Left, Right // 0, 1, 2, 3
-        }
-        public Direction direction = Direction.Down;
+        //public enum Direction
+        //{
+        //    Up, Down, Left, Right // 0, 1, 2, 3
+        //}
+        //public Direction direction = Direction.Down;
 
         public Game1()
         {
@@ -63,6 +63,7 @@ namespace Sokoban_P1
             _graphics.PreferredBackBufferHeight = tileSize * level.GetLength(1); //definição da altura
             _graphics.PreferredBackBufferWidth = tileSize * level.GetLength(0); //definição da largura
             _graphics.ApplyChanges(); //aplica a atualização da janela
+            sokoban.LoadContents();
 
             base.Initialize();
         }
@@ -74,11 +75,11 @@ namespace Sokoban_P1
             // TODO: use this.Content to load your game content here
             font = Content.Load<SpriteFont>("File"); //Use the name of sprite font file ('File') no extension
 
-            player = new Texture2D[4];
-            player[(int)Direction.Down] = Content.Load<Texture2D>("Character4");
-            player[(int)Direction.Up] = Content.Load<Texture2D>("Character7");
-            player[(int)Direction.Left] = Content.Load<Texture2D>("Character1");
-            player[(int)Direction.Right] = Content.Load<Texture2D>("Character2");
+            //player = new Texture2D[4];
+            //player[(int)Direction.Down] = Content.Load<Texture2D>("Character4");
+            //player[(int)Direction.Up] = Content.Load<Texture2D>("Character7");
+            //player[(int)Direction.Left] = Content.Load<Texture2D>("Character1");
+            //player[(int)Direction.Right] = Content.Load<Texture2D>("Character2");
 
             dot = Content.Load<Texture2D>("EndPoint_Blue");
             box = Content.Load<Texture2D>("Crate_Brown");
@@ -134,9 +135,9 @@ namespace Sokoban_P1
                     }
                 }
             }
-            position.X = sokoban.Position.X * tileSize; //posição do Player
-            position.Y = sokoban.Position.Y * tileSize; //posição do Player
-            _spriteBatch.Draw(player[(int)direction], position, Color.White); //desenha o Player
+            //position.X = sokoban.Position.X * tileSize; //posição do Player
+            //position.Y = sokoban.Position.Y * tileSize; //posição do Player
+            //_spriteBatch.Draw(player[(int)direction], position, Color.White); //desenha o Player
 
             foreach (Point b in boxes)
             {
