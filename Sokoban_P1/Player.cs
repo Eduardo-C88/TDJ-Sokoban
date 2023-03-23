@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
-using System.Numerics;
+//using System.Numerics;
 using System.Reflection.Metadata;
 
 namespace Sokoban_P1
@@ -23,11 +23,13 @@ namespace Sokoban_P1
         // Current player position in the matrix (multiply by tileSize prior to drawing)
         private Point position; //Point = Vector2, mas são inteiros
         private Game1 game; //reference from Game1 to Player
-        private bool keysReleased = true;
+        //private bool keysReleased = true;
         private Direction direction = Direction.Down;
+        private int delta = 0;
+        private int speed = 2; // NOTE: must be tileSize 
+        private Vector2 directionVector;
 
         public Point Position => position; //auto função (equivalente a ter só get sem put)
-
 
         // Direction 
         private Texture2D[][] sprites;
@@ -64,32 +66,46 @@ namespace Sokoban_P1
 
         public void Update(GameTime gameTime)
         {
-            Point lastPosition = position;
-            KeyboardState kState = Keyboard.GetState();
-            if (keysReleased)
+            if (delta > 0)
             {
-                keysReleased = false;
-                if ((kState.IsKeyDown(Keys.A)) || (kState.IsKeyDown(Keys.Left)))
-                {
-                    position.X--;
-                    direction = Direction.Left;
-                }
-                else if ((kState.IsKeyDown(Keys.W)) || (kState.IsKeyDown(Keys.Up)))
-                {
-                    position.Y--;
-                    direction = Direction.Up;
-                }
-                else if ((kState.IsKeyDown(Keys.S)) || (kState.IsKeyDown(Keys.Down)))
-                {
-                    position.Y++;
-                    direction = Direction.Down;
-                }
-                else if ((kState.IsKeyDown(Keys.D)) || (kState.IsKeyDown(Keys.Right)))
-                {
-                    position.X++;
-                    direction = Direction.Right;
-                }
-                else keysReleased = true;
+                delta = (delta + speed) % Game1.tileSize;
+            }
+            else
+            {
+                Point lastPosition = position;
+                KeyboardState kState = Keyboard.GetState();
+                //if (keysReleased)
+                //{
+                //    keysReleased = false;
+                    if ((kState.IsKeyDown(Keys.A)) || (kState.IsKeyDown(Keys.Left)))
+                    {
+                        position.X--;
+                        direction = Direction.Left;
+                        delta = speed;
+                        directionVector = -Vector2.UnitX;
+                    }
+                    else if ((kState.IsKeyDown(Keys.W)) || (kState.IsKeyDown(Keys.Up)))
+                    {
+                        position.Y--;
+                        direction = Direction.Up;
+                        delta = speed;
+                        directionVector = -Vector2.UnitY;
+                    }
+                    else if ((kState.IsKeyDown(Keys.S)) || (kState.IsKeyDown(Keys.Down)))
+                    {
+                        position.Y++;
+                        direction = Direction.Down;
+                        delta = speed;
+                        directionVector = Vector2.UnitY;
+                    }
+                    else if ((kState.IsKeyDown(Keys.D)) || (kState.IsKeyDown(Keys.Right)))
+                    {
+                        position.X++;
+                        direction = Direction.Right;
+                        delta = speed;
+                        directionVector = Vector2.UnitX;
+                    }
+                //else keysReleased = true;
 
                 // destino é caixa?
                 if (game.HasBox(position.X, position.Y))
@@ -111,32 +127,47 @@ namespace Sokoban_P1
                     else
                     {
                         position = lastPosition;
+                        delta = 0;
                     }
                 }
                 else
                 {
                     //  se não é caixa, se não está livre, parado!
                     if (!game.FreeTile(position.X, position.Y))
+                    {
                         position = lastPosition;
+                        delta = 0;
+                    }
                 }
-            }
-            else
-            {
-                if (kState.IsKeyUp(Keys.A) && kState.IsKeyUp(Keys.W) &&
-                    kState.IsKeyUp(Keys.S) && kState.IsKeyUp(Keys.D))
-                {
-                    keysReleased = true;
-                }
+                    
+                //}
+                //else
+                //{
+                //    if (kState.IsKeyUp(Keys.A) && kState.IsKeyUp(Keys.W) &&
+                //        kState.IsKeyUp(Keys.S) && kState.IsKeyUp(Keys.D))
+                //    {
+                //        keysReleased = true;
+                //    }
+                //}
             }
         }
-
         public void Draw(SpriteBatch sb)
         {
-            Rectangle rect = new Rectangle(Game1.tileSize * position.X,
-                                           Game1.tileSize * position.Y,
-                                           Game1.tileSize, Game1.tileSize);
+            Vector2 pos = position.ToVector2() * Game1.tileSize;
+            int frame = 0;
+            if (delta > 0)
+            {
+                pos -= (Game1.tileSize - delta) * directionVector;
+                float animSpeed = 8f;
+                frame = (int)((delta / speed) % ((int)animSpeed * sprites[(int)direction].Length) / animSpeed);
+            }
 
-            sb.Draw(sprites[(int)direction][0], rect, Color.White); //desenha o Player
+            //Rectangle rect = new Rectangle(Game1.tileSize * position.X,
+            //                               Game1.tileSize * position.Y,
+            //                               Game1.tileSize, Game1.tileSize);
+
+            Rectangle rect = new Rectangle(pos.ToPoint(), new Point(Game1.tileSize));
+            sb.Draw(sprites[(int)direction][frame], rect, Color.White); //desenha o Player
         }
 
     }
