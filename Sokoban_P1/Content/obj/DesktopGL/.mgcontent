@@ -17,11 +17,9 @@
     <File>C:/TDJ/TDJ-Sokoban/Sokoban_P1/Content/Crate_Brown.png</File>
     <File>C:/TDJ/TDJ-Sokoban/Sokoban_P1/Content/EndPoint_Blue.png</File>
     <File>C:/TDJ/TDJ-Sokoban/Sokoban_P1/Content/File.spritefont</File>
-    <File>C:/TDJ/TDJ-Sokoban/Sokoban_P1/Content/File2.spritefont</File>
     <File>C:/TDJ/TDJ-Sokoban/Sokoban_P1/Content/Wall_Brown.png</File>
   </SourceFiles>
   <DestFiles>
-    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

@@ -65,3 +65,4 @@ C:\TDJ\TDJ-Sokoban\Sokoban_P1\bin\Debug\net6.0\Content\Character7.xnb
 C:\TDJ\TDJ-Sokoban\Sokoban_P1\bin\Debug\net6.0\Content\Character8.xnb
 C:\TDJ\TDJ-Sokoban\Sokoban_P1\bin\Debug\net6.0\Content\Character9.xnb
 C:\TDJ\TDJ-Sokoban\Sokoban_P1\bin\Debug\net6.0\Content\File2.xnb
+C:\TDJ\TDJ-Sokoban\Sokoban_P1\bin\Debug\net6.0\Content\level2.txt
